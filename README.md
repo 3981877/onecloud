@@ -38,22 +38,30 @@ WIN10电脑一台
 一个是dibian11(bullseye)
 ## 首次刷入系统短接方法：
 
-老主板短接位置
+- 老主板短接位置
 
 ![1](https://github.com/3981877/onecloud/assets/60610978/2c06a27f-eb7b-486e-a8ed-57b0a3d9ac35)
 
-新主板短接位置
+- 新主板短接位置
 
 ![2](https://github.com/3981877/onecloud/assets/60610978/d96e1273-f83a-4051-939a-0ec30d3c1a14)
 
 ## 拆机后、usb插入玩客云「靠近HDMI的接口」、另一头接入电脑usb、短接焊点、通电。
 
+- 安装 Armbian 后 更新软件（非必要）
+
+  ```
+  apt-get update && apt-get upgrade
+  ```
+
 ## 「安装docker」
 
-```apt install docker.io
+```
+apt install docker.io
 ```
 
 等待代码跑完后，docker -v 查看下版本，证明安装成功！
+
 ## 安装OpenWrt
 
 镜像一：https://www.right.com.cn/forum/thread-8024126-1-1.html
@@ -62,20 +70,29 @@ WIN10电脑一台
 
 本次安装的是镜像一，比较精简，功能够用；镜像二功能很全，根据自己需要选择。
 ## 「打开网卡混杂模式」
-```ip link set eth0 promisc on
+```
+ip link set eth0 promisc on
 ```
 
 ## 「创建网络」
 
-```docker network create -d macvlan --subnet=192.168.100.0/24 --gateway=192.168.100.1 -o parent=eth0 macnet
+```
+docker network create -d macvlan --subnet=192.168.100.0/24 --gateway=192.168.100.1 -o parent=eth0 macnet
 ```
 
 ##### 自己根据 玩客云 所在网段修改，如：玩客云IP:192.168.1.175，则192.168.0.0/24 改成 192.168.1.0/24，192.168.0.1改成主路由地址
 
-## 「拉取镜像」
+## 拉取 OpenWRT 镜像
 
-```docker pull jyhking/onecloud:1.1docker run -itd --name=OneCloud --restart=always --network=macnet --privileged=true jyhking/onecloud:1.1 /sbin/init
 ```
+docker pull jyhking/onecloud:1.1
+```
+
+## 创建容器
+```
+docker run -itd --name=OneCloud --restart=always --network=macnet --privileged=true jyhking/onecloud:1.1 /sbin/init
+```
+--name=OneCloud 其中OneCloud是容器名称，可以更改成你想要的，容器名称注意不要和其他容器一样，会冲突
 
 openwrt镜像运行成功，然后打开路由器后台，找到openwrt地址。
 
@@ -91,5 +108,6 @@ openwrt镜像运行成功，然后打开路由器后台，找到openwrt地址。
 
 ## 防火墙自定义规则添加下面代码:
 
-```iptables -t nat -I POSTROUTING eth0 -j MASQUERADE
+```
+iptables -t nat -I POSTROUTING eth0 -j MASQUERADE
 ```
