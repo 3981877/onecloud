@@ -158,8 +158,8 @@ wget https://github.com/kuoruan/luci-app-frpc/releases/download/v1.2.1-1/luci-i1
 安装方法：
 ```
 opkg install frpc_0.45.0-1_arm_cortex-a5_vfpv4.ipk --force-depends
-opkg install v1.2.1-1/luci-app-frpc_1.2.1-1_all.ipk --force-depends
-opkg install v1.2.1-1/luci-i18n-frpc-zh-cn_1.2.1-1_all.ipk --force-depends
+opkg install luci-app-frpc_1.2.1-1_all.ipk --force-depends
+opkg install luci-i18n-frpc-zh-cn_1.2.1-1_all.ipk --force-depends
 ```
 - 其他的也可以如法炮制
 ## 玩客云openwrt专用源推荐
