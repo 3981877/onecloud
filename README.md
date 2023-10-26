@@ -1,4 +1,4 @@
-# onecloud
+# 玩客云OneCloud刷ubantu或者刷dibian直刷EMCC起动
 入门玩客云和各种新鲜玩法
 ## 「玩客云硬件参数：」
 
