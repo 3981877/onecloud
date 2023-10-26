@@ -24,7 +24,8 @@ WIN10电脑一台
 
 ## 玩客云刷机方法：
 刷入方法：解压固件包，电脑连接玩客云靠近hdmi的USB口，短接刷机触点或者按住复位键的同时给玩客云通电，即可使用Aml Burn Tool软件直接烧录固件至玩客云。 
-初始账号密码  root   1234
+
+- 初始账号密码  root   1234
 
 
 (特别注意：USB Burning Tool 请使用2.1.6.8版本，其他版本可能出现超时等报错，软件下载详见下述文本）
@@ -32,10 +33,12 @@ WIN10电脑一台
 
 刷机包下载地址：https://github.com/hzyitc/armbian-onecloud/releases 注意后缀带Burn的才是直刷包，其他都是USB启动包。
 
-如果Github下载较慢，以下是镜像下载链接（包括刷机软件）：
-两个包随便一个都可以刷
-一个是ubantu22.04(jammy) 
-一个是dibian11(bullseye)
+## 两个包随便一个都可以刷 
+
+- 一个是ubantu22.04(jammy) 
+
+- 一个是dibian11(bullseye)
+
 ## 首次刷入系统短接方法：
 
 - 老主板短接位置
@@ -50,9 +53,9 @@ WIN10电脑一台
 
 - 安装 Armbian 后 更新软件（非必要）
 
-  ```
-  apt-get update && apt-get upgrade
-  ```
+```
+apt-get update && apt-get upgrade
+```
 
 ## 「安装docker」
 
