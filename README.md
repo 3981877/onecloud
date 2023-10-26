@@ -86,12 +86,22 @@ apt install docker.io
 
 ## 安装OpenWrt
 
-镜像一：https://www.right.com.cn/forum/thread-8024126-1-1.html
+镜像一：
+```
+docker pull jyhking/onecloud:1.1
+```
+来源：https://www.right.com.cn/forum/thread-8024126-1-1.html
 
-镜像二：https://hub.docker.com/r/xuanaimai/onecloud
+镜像二：
+```
+docker pull xuanaimai/onecloud
+```
+来源：https://hub.docker.com/r/xuanaimai/onecloud
 
-镜像三：docker pull 2224758988/onecloud:openwrt-1.0
-
+镜像三：
+```
+docker pull 2224758988/onecloud:openwrt-1.0
+```
 本次安装的是镜像一，比较精简，功能够用；镜像二功能很全，根据自己需要选择。
 ## 「打开网卡混杂模式」
 ```
