@@ -56,7 +56,26 @@ WIN10电脑一台
 ```
 apt-get update && apt-get upgrade
 ```
+## docker环境搭建
 
+国内网络连接不稳定，需要更换软件源，然后更新系统，之后才能安装docker。
+
+- 「换Debian源」
+
+```
+mv /etc/apt/sources.list  /etc/apt/sources.list.bk  nano /etc/apt/sources.list
+```
+进入编辑器后，粘贴下面代码
+```
+deb https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
+deb-src https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
+deb https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main
+deb-src https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main
+deb https://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
+```
 ## 「安装docker」
 
 ```
@@ -70,6 +89,8 @@ apt install docker.io
 镜像一：https://www.right.com.cn/forum/thread-8024126-1-1.html
 
 镜像二：https://hub.docker.com/r/xuanaimai/onecloud
+
+镜像三：docker pull 2224758988/onecloud:openwrt-1.0
 
 本次安装的是镜像一，比较精简，功能够用；镜像二功能很全，根据自己需要选择。
 ## 「打开网卡混杂模式」
@@ -113,4 +134,30 @@ openwrt镜像运行成功，然后打开路由器后台，找到openwrt地址。
 
 ```
 iptables -t nat -I POSTROUTING eth0 -j MASQUERADE
+```
+## openwrt插件安装方法 如：frpc
+
+下载方法：
+```
+wget https://github.com/kuoruan/openwrt-frp/releases/download/v0.45.0-1/frpc_0.45.0-1_arm_cortex-a5_vfpv4.ipk
+wget https://github.com/kuoruan/luci-app-frpc/releases/download/v1.2.1-1/luci-app-frpc_1.2.1-1_all.ipk
+wget https://github.com/kuoruan/luci-app-frpc/releases/download/v1.2.1-1/luci-i18n-frpc-zh-cn_1.2.1-1_all.ipk
+```
+安装方法：
+```
+opkg install frpc_0.45.0-1_arm_cortex-a5_vfpv4.ipk --force-depends
+opkg install v1.2.1-1/luci-app-frpc_1.2.1-1_all.ipk --force-depends
+opkg install v1.2.1-1/luci-i18n-frpc-zh-cn_1.2.1-1_all.ipk --force-depends
+```
+- 其他的也可以如法炮制
+## 玩客云openwrt专用源推荐
+
+- 清华大学开源软件镜像站
+```
+src/gz openwrt_core https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/packages/
+src/gz openwrt_base https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/base/
+src/gz openwrt_luci https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/luci/
+src/gz openwrt_packages https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/packages/
+src/gz openwrt_routing https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/routing/
+src/gz openwrt_telephony https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/telephony/
 ```
