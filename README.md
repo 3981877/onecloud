@@ -63,9 +63,9 @@ WIN10电脑一台
 ```
 mv /etc/apt/sources.list  /etc/apt/sources.list.bk  nano /etc/apt/sources.list
 ```
-进入编辑器后，粘贴下面代码
+进入编辑器后，粘贴下面代码，请注意乱码，一条条的复制试试
 ```
-deb https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
+deb https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
 deb-src https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
 deb https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main
 deb-src https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main
