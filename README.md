@@ -61,20 +61,83 @@ WIN10电脑一台
 - 「换Debian源」
 
 ```
-mv /etc/apt/sources.list  /etc/apt/sources.list.bk  nano /etc/apt/sources.list
+nano /etc/apt/sources.list
 ```
-进入编辑器后，粘贴下面代码，请注意乱码，一条条的复制试试
+进入编辑器后，粘贴下面代码
+
+## 国内常见镜像站点
+- 使用说明:
+
+以下我们用dibian11(bullseye)演示：
+
+一般情况下，将/etc/apt/sources.list文件中Debian默认的软件仓库地址和安全更新仓库地址修改为国内的镜像地址即可，比如将deb.debian.org和security.debian.org改为mirrors.xxx.com，并使用https访问，可使用如下命令：
 ```
-deb https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
-deb-src https://mirrors.ustc.edu.cn/debian/ bullseye main non-free contrib
-deb https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main
-deb-src https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main
-deb https://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
-deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
-deb https://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
-deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
+sed -i "s@http://\(deb\|security\).debian.org@https://mirrors.xxx.com@g" /etc/apt/sources.list
 ```
-- 安装 Armbian 后 更新软件（非必要）
+- 阿里云镜像站
+```
+deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib
+deb https://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main
+deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib
+```
+- 腾讯云镜像站
+```
+deb https://mirrors.tencent.com/debian/ bullseye main non-free contrib
+deb-src https://mirrors.tencent.com/debian/ bullseye main non-free contrib
+deb https://mirrors.tencent.com/debian-security/ bullseye-security main
+deb-src https://mirrors.tencent.com/debian-security/ bullseye-security main
+deb https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib
+```
+- 网易镜像站
+```
+deb https://mirrors.163.com/debian/ bullseye main non-free contrib
+deb-src https://mirrors.163.com/debian/ bullseye main non-free contrib
+deb https://mirrors.163.com/debian-security/ bullseye-security main
+deb-src https://mirrors.163.com/debian-security/ bullseye-security main
+deb https://mirrors.163.com/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.163.com/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.163.com/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.163.com/debian/ bullseye-backports main non-free contrib
+```
+- 华为镜像站
+```
+deb https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib
+deb-src https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib
+deb https://mirrors.huaweicloud.com/debian-security/ bullseye-security main
+deb-src https://mirrors.huaweicloud.com/debian-security/ bullseye-security main
+deb https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib
+deb-src https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib
+deb https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib
+deb-src https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib
+```
+- 清华大学镜像站
+```
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+```
+- 中科大镜像站
+```
+deb https://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ bullseye main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian/ bullseye-updates main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-updates main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian/ bullseye-backports main contrib non-free
+deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-backports main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian-security/ bullseye-security main contrib non-free
+```
+- 修改之后再运行apt update更新索引
 
 ```
 apt-get update && apt-get upgrade
