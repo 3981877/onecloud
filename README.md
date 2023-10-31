@@ -163,7 +163,7 @@ docker pull jyhking/onecloud:1.1
 
 镜像二：
 ```
-docker pull xuanaimai/onecloud
+docker pull xuanaimai/onecloud:21-09-15
 ```
 来源：https://hub.docker.com/r/xuanaimai/onecloud
 
