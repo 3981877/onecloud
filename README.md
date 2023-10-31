@@ -53,11 +53,7 @@ WIN10电脑一台
 
 ## 拆机后、usb插入玩客云「靠近HDMI的接口」、另一头接入电脑usb、短接焊点、通电。
 
-- 安装 Armbian 后 更新软件（非必要）
 
-```
-apt-get update && apt-get upgrade
-```
 ## docker环境搭建
 
 国内网络连接不稳定，需要更换软件源，然后更新系统，之后才能安装docker。
@@ -77,6 +73,11 @@ deb https://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free cont
 deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-updates main non-free contrib
 deb https://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
 deb-src https://mirrors.ustc.edu.cn/debian/ bullseye-backports main non-free contrib
+```
+- 安装 Armbian 后 更新软件（非必要）
+
+```
+apt-get update && apt-get upgrade
 ```
 ## 「安装docker」
 
