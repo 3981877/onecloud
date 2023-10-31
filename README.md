@@ -240,3 +240,13 @@ src/gz openwrt_packages https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/pa
 src/gz openwrt_routing https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/routing/
 src/gz openwrt_telephony https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/telephony/
 ```
+- openwrt.ai比较专业和丰富的源推荐使用
+
+```
+src/gz openwrt_core https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/packages
+src/gz openwrt_base https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/base
+src/gz openwrt_packages https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/packages
+src/gz openwrt_luci https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/luci
+src/gz openwrt_routing https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/routing
+src/gz openwrt_kiddin9 https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/kiddin9
+```
