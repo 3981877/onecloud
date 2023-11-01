@@ -303,7 +303,7 @@ curl -fsSL https://get.casaos.io | sudo bash
 ```
 casaos-uninstall
 ```
-## 玩客云安装CUPS打印系统
+## 玩客云Armbian M1005打印服务器
 
 - 安装cups
 ```
