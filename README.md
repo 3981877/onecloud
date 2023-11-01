@@ -243,7 +243,7 @@ src/gz openwrt_telephony https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/p
 - openwrt.ai比较专业和丰富的源推荐使用
 
 ```
-src/gz openwrt_core https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/packages
+src/gz openwrt_core https://dl.openwrt.ai/releases/targets/meson/meson8b/6.1.56/
 src/gz openwrt_base https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/base
 src/gz openwrt_packages https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/packages
 src/gz openwrt_luci https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/luci
