@@ -353,4 +353,40 @@ systemctl restart cups
 ```
 apt install hplip
 ```
+## 玩客云Armbian 青龙面板
 
+- 1、docker 安装后，直接脚本安装青龙面板
+```
+docker run -dit \
+   -v $PWD/ql/config:/ql/config \
+   -v $PWD/ql/log:/ql/log \
+   -v $PWD/ql/db:/ql/db \
+   -p 5700:5700 \
+   --name qinglong \
+   --hostname qinglong \
+   --restart always \
+   whyour/qinglong:latest
+```
+
+- 2、脚本安装青龙面板依赖
+```
+docker exec -it qinglong bash
+curl -fsSL https://ghproxy.com/https://raw.githubusercontent.com/shufflewzc/QLDependency/main/Shell/QLOneKeyDependency.sh | sh
+```
+
+- 3、以下代码提供一个“测试库”更多好用的“库”各位同学自行搜寻
+```
+【jdpro集合库】
+项目地址：https://github.com/6dylan6/jdpro.git
+#国内机用下面指令（带代理）：
+ql repo https://ghproxy.com/https://github.com/6dylan6/jdpro.git "jd_|jx_|jddj_" "backUp" "^jd[^_]|USER|JD|function|sendNotify"
+#########################################################################
+#国外机用下面指令：
+ql repo https://github.com/6dylan6/jdpro.git "jd_|jx_|jddj_" "backUp" "^jd[^_]|USER|JD|function|sendNotify"
+#########################################################################
+```
+- 4、最后一步，填写COOKIE，
+```
+名称：JD_COOKIE
+代码：pt_key=AAJj4J5yADBEBscQUM;pt_pin=jd_737cdb; 
+```
