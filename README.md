@@ -390,3 +390,27 @@ ql repo https://github.com/6dylan6/jdpro.git "jd_|jx_|jddj_" "backUp" "^jd[^_]|U
 名称：JD_COOKIE
 代码：pt_key=AAJj4J5yADBEBscQUM;pt_pin=jd_737cdb; 
 ```
+## 玩客云armbian灯光控制
+- 介绍
+- 玩客云刷armbian后灯光一直显示为蓝色，死机也不知道，这样灯光就是一个摆设了，所以就出现了这个脚本，控制灯光，让灯光一秒变换一次，起到一个肉眼监控的作用而不用打开ssh或是网站之类的；另外一些人认为玩客云稳定运行，不需要灯光，碍眼的可以使用关闭灯光脚本；还有可以修改定义颜色。三种模式，但是注意三者不可混用，否则会出问题。
+
+- 灯光闪烁使用方法
+
+- 登录ssh执行脚本：
+
+```
+wget -qO led.sh https://gitee.com/yinjiangbi_admin/wankeyunled/raw/master/led.sh && sh led.sh
+```
+- 改变灯光颜色使用方法
+
+登录ssh执行脚本：
+```
+wget -qO changeled.sh https://gitee.com/yinjiangbi_admin/wankeyunled/raw/master/changeled.sh && sh changeled.sh
+```
+- 完全卸载
+
+登录ssh执行脚本：
+```
+wget -qO rmled.sh https://gitee.com/yinjiangbi_admin/wankeyunled/raw/master/rmled.sh && sh rmled.sh
+```
+- 灯光闪烁需要vi /etc/crontab删除定时任务
