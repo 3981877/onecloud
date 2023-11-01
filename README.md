@@ -278,3 +278,19 @@ fatload ${bootdev} 0x20800000 boot.scr && autoscr 0x20800000
 setenv bootdev "mmc 1"
 fatload ${bootdev} 0x20800000 boot.scr && autoscr 0x20800000
 ```
+## 小米电视访问共享：
+- Armbian 服务器修改配置：
+```
+vi /etc/samba/smb.conf
+```
+- 修改smb.conf文件， 注释掉in protocol=SMB2,并且添加server min protocol=NT1;
+```
+[global]
+## fruit settings
+server min protocol = NT1
+#min protocol = SMB2
+```
+- 重启服务
+```
+service smbd restart
+```
