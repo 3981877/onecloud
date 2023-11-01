@@ -266,3 +266,15 @@ vi /sys/class/leds/onecloud:red:alive/brightness
 vi /sys/class/leds/onecloud:green:alive/brightness
 0 
 ```
+## 如何从u-boot启动？
+- 从USB启动
+```
+setenv bootdev "usb 0"
+usb start
+fatload ${bootdev} 0x20800000 boot.scr && autoscr 0x20800000
+```
+- 从eMMC启动
+```
+setenv bootdev "mmc 1"
+fatload ${bootdev} 0x20800000 boot.scr && autoscr 0x20800000
+```
