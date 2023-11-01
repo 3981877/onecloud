@@ -250,3 +250,19 @@ src/gz openwrt_luci https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/luc
 src/gz openwrt_routing https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/routing
 src/gz openwrt_kiddin9 https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/kiddin9
 ```
+## 可修改LED灯颜色 0为关闭, 1为开启
+- 配置即时生效：例图【蓝色】
+```
+echo 0 > /sys/class/leds/onecloud:red:alive/brightness
+echo 1 > /sys/class/leds/onecloud:blue:alive/brightness
+echo 0 > /sys/class/leds/onecloud:green:alive/brightness
+```
+- 配置永久生效：例图【蓝色】
+```
+vi /sys/class/leds/onecloud:blue:alive/brightness
+1
+vi /sys/class/leds/onecloud:red:alive/brightness
+0
+vi /sys/class/leds/onecloud:green:alive/brightness
+0 
+```
