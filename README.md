@@ -414,3 +414,17 @@ wget -qO changeled.sh https://gitee.com/yinjiangbi_admin/wankeyunled/raw/master/
 wget -qO rmled.sh https://gitee.com/yinjiangbi_admin/wankeyunled/raw/master/rmled.sh && sh rmled.sh
 ```
 - 灯光闪烁需要vi /etc/crontab删除定时任务
+
+## 修改固定IP和MAC地址
+- 方法一：
+```
+armbian-config
+```
+- 方法二：
+```
+#以下两个都要改
+nano /etc/network/interfaces
+nano /etc/network/interfaces.default
+#以上都必须需要加上这一条命令：
+pre-up /sbin/ifconfig eth0 mtu 3838
+```
