@@ -290,7 +290,16 @@ vi /etc/samba/smb.conf
 server min protocol = NT1
 #min protocol = SMB2
 ```
+
 - 重启服务
 ```
 service smbd restart
+```
+## 安装Casa OS 【NAS系统】
+```
+curl -fsSL https://get.casaos.io | sudo bash 
+```
+- 卸载casaos
+```
+casaos-uninstall
 ```
