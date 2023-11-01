@@ -303,3 +303,43 @@ curl -fsSL https://get.casaos.io | sudo bash
 ```
 casaos-uninstall
 ```
+## 玩客云安装CUPS打印系统
+
+- 安装cups
+```
+#查看可以使用的cups安装包
+apt-cache madison cups
+ cups | 2.3.3op2-3+deb11u2 | http://deb.debian.org/debian bullseye/main arm64 Packages
+ cups | 2.3.3op2-3+deb11u2 | http://security.debian.org bullseye-security/main arm64 Packages
+#若出现安装失败情况，请再次执行apt_install安装；
+apt install cups
+```
+- 安装完成后修改以下服务脚本内容；
+```
+vi /etc/cups/cupsd.conf
+```
+- 修改的内容
+```
+ listen 0.0.0.0:631
+# Restrict access to the server...
+<Location />
+  Order allow,deny
+Allow all
+</Location>
+# Restrict access to the admin pages...
+<Location /admin>
+  Order allow,deny
+Allow all
+</Location>
+# Restrict access to configuration files...
+<Location /admin/conf>
+  AuthType Default
+  Require user @SYSTEM
+  Order allow,deny
+Allow all
+</Location>
+```
+- 重启cups
+```
+systemctl restart cups	
+```
