@@ -343,3 +343,14 @@ Allow all
 ```
 systemctl restart cups	
 ```
+- 安装完成后；打开【192.168.3.32:631】测试安装是否正常。
+
+- cups 登录成功页面
+
+- 输入系统账号密码；登录密码为系统账号密码； 
+
+- 因本案例测试HP_LaserJet_M1005 为惠普厂家设备，以下代码安装HP打印机驱动
+```
+apt install hplip
+```
+
