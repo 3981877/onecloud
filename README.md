@@ -153,7 +153,7 @@ apt install docker.io
 
 等待代码跑完后，docker -v 查看下版本，证明安装成功！
 
-## 安装OpenWrt
+- 安装OpenWrt
 
 镜像一：
 ```
@@ -172,26 +172,26 @@ docker pull xuanaimai/onecloud:21-09-15
 docker pull 2224758988/onecloud:openwrt-1.0
 ```
 本次安装的是镜像一，比较精简，功能够用；镜像二功能很全，根据自己需要选择。
-## 「打开网卡混杂模式」
+- 「打开网卡混杂模式」
 ```
 ip link set eth0 promisc on
 ```
 
-## 「创建网络」
+- 「创建网络」
 
 ```
 docker network create -d macvlan --subnet=192.168.3.0/24 --gateway=192.168.3.1 -o parent=eth0 macnet
 ```
 
-##### 自己根据 玩客云 所在网段修改，如：玩客云IP:192.168.1.175，则192.168.0.0/24 改成 192.168.1.0/24，192.168.0.1改成主路由地址
+- 自己根据 玩客云 所在网段修改，如：玩客云IP:192.168.1.175，则192.168.0.0/24 改成 192.168.1.0/24，192.168.0.1改成主路由地址
 
-## 拉取 OpenWRT 镜像
+- 拉取 OpenWRT 镜像
 
 ```
 docker pull jyhking/onecloud:1.1
 ```
 
-## 创建容器
+- 创建容器
 ```
 docker run -itd --name=OneCloud --restart=always --network=macnet --privileged=true jyhking/onecloud:1.1 /sbin/init
 ```
@@ -199,7 +199,7 @@ docker run -itd --name=OneCloud --restart=always --network=macnet --privileged=t
 
 openwrt镜像运行成功，然后打开路由器后台，找到openwrt地址。
 
-## 「默认用户名：root  密码： password」
+- 「默认用户名：root  密码： password」
 
 -「玩客云旁路由设置：」
 
@@ -209,10 +209,27 @@ openwrt镜像运行成功，然后打开路由器后台，找到openwrt地址。
 
 - 关闭IPV6
 
-## 防火墙自定义规则添加下面代码:
+- 防火墙自定义规则添加下面代码:
 
 ```
 iptables -t nat -I POSTROUTING eth0 -j MASQUERADE
+```
+## Docker#删除容器#删除镜像流程
+```
+#查看所有容器
+docker ps -a
+#设置容器不自启动
+docker container update --restart=no [容器ID]
+#停止容器
+docker stop [容器ID]
+#删除容器
+docker rm [容器ID]
+```
+```
+#查看所有镜像
+docker images
+#删除镜像
+docker rmi [镜像ID]
 ```
 ## openwrt插件安装方法 如：frpc
 
