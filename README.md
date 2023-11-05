@@ -445,3 +445,65 @@ nano /etc/network/interfaces.default
 #以上都必须需要加上这一条命令：
 pre-up /sbin/ifconfig eth0 mtu 3838
 ```
+## 如何挂载NTFS的硬盘？
+```
+安装ntfs-3g驱动
+apt-get install ntfs-3g
+
+ 查看硬盘设备名称
+lsblk
+
+下面是挂载的命令。挂载之前请检查/mnt/casa_sda1/文件夹是否存在。
+mount -t ntfs-3g -o locale=zh_CN.utf8,umask=0 /dev/sda1 /mnt/casa_sda1/
+
+需要注意： ntfs-3g 后面有空格，然后才是 -o
+
+- 如何开启SMB文件共享？
+
+
+安装samba需要的驱动
+apt-get install samba samba-common-bin avahi-daemon 
+
+增加共享文件夹
+nano /etc/samba/smb.conf
+
+在smb.conf 末尾粘贴如下代码
+
+security=user
+[public]
+comment = samba
+path = /mnt/casa_sda1/
+writable = yes
+create mask = 0777
+directory mask = 0777
+browseable = yes
+
+增加smb共享的用户（省事儿且不严谨的操作）
+smbpasswd -a root
+
+---------分割线-------
+
+- 重启smb服务（部分机型可忽略）
+systemctl restart smbd
+
+---------------课外知识分割线---------
+
+- 如何彻底卸载smb？
+
+sudo apt-get remove --purge samba samba-*
+sudo apt-get autoremove
+
+- 如何卸载硬盘？
+
+假设 挂载的路径为 /mnt/casa_sda1 ，则执行以下代码即可
+
+umount -l /mnt/casa_sda1
+
+
+手动挂载NTFS 硬盘
+
+apt-get install ntfs-3g
+
+mount -t ntfs-3g -o locale=zh_CN.utf8,umask=0 /dev/sda1 /mnt/casa_sda1/
+
+```
