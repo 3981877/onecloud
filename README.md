@@ -507,3 +507,83 @@ apt-get install ntfs-3g
 mount -t ntfs-3g -o locale=zh_CN.utf8,umask=0 /dev/sda1 /mnt/casa_sda1/
 
 ```
+
+## 挂载SD卡、U盘、硬盘（测试成功）：
+
+```
+1.输入以下命令 查看所有存储设备
+
+lsblk
+
+2. 输入以下命令 格式化SD卡分区
+
+mkfs.ext4 /dev/mmcblk0p1
+
+3. 输入以下命令 在根目录创建名为sdcard的挂载点
+
+mkdir /sdcard
+
+4. 输入以下命令 将SD卡命名为sdcard的目录并挂载在根目录下
+
+mount /dev/mmcblk0p1 /sdcard
+
+5. 输入以下命令 查找分区的UUID（注意是part分区而非disk硬盘的UUID）
+
+输出的UUID=是需要的值而非PARTUUID=
+
+blkid /dev/mmcblk0p1
+
+6. 输入以下命令 编辑磁盘挂载配置文件
+
+nano /etc/fstab
+
+7. 输入以下命令 填写硬盘自动挂载命令
+
+UUID=
+
+填写完毕按Ctrl+X退出，输入Y保存
+
+8. 输入以下命令 测试硬盘是否挂载成功
+
+
+
+如果没有报错，则输入reboot重启让挂载生效。
+
+迁移docker主目录腾出空间（测试成功）：
+
+1.     给外置存储文件夹授权
+
+chmod -R 777 /hdd
+
+reboot
+
+2.     在外置存储创建docker目录
+
+
+
+3.     修改/etc/docker/daemon.json文件值，文件不存在需手动创建
+
+
+
+新增以下信息：
+
+{
+
+
+
+4.     复制原本的文件到docker新目录,要等一会
+
+# 下面是例子，按2步结果修改cd路径
+
+
+
+5.     启动docker服务
+
+6.     重启并检查是否成功
+
+验证Docker Root Dir的值是否已修改为/opt/docker/data
+
+7.     没问题的话删除原目录下文件
+
+8.     最后检查多出来的空间情况
+```
