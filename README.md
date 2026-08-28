@@ -247,7 +247,9 @@ opkg install luci-i18n-frpc-zh-cn_1.2.1-1_all.ipk --force-depends
 ```
 - 其他的也可以如法炮制
 ## 玩客云openwrt专用源推荐
-
+```
+/etc/opkg/distfeeds.conf
+```
 - 清华大学开源软件镜像站
 ```
 src/gz openwrt_core https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/packages-23.05/arm_cortex-a5_vfpv4/packages/
@@ -260,12 +262,12 @@ src/gz openwrt_telephony https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/p
 - openwrt.ai比较专业和丰富的源推荐使用
 
 ```
-src/gz openwrt_core https://dl.openwrt.ai/releases/targets/meson/meson8b/6.1.56
-src/gz openwrt_base https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/base
-src/gz openwrt_packages https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/packages
-src/gz openwrt_luci https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/luci
-src/gz openwrt_routing https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/routing
-src/gz openwrt_kiddin9 https://dl.openwrt.ai/packages-23.05/arm_cortex-a5_vfpv4/kiddin9
+src/gz openwrt_core https://dl.openwrt.ai/packages-24.10/
+src/gz openwrt_base https://dl.openwrt.ai/packages-24.10/arm_cortex-a5_vfpv4/base/
+src/gz openwrt_packages https://dl.openwrt.ai/packages-24.10/arm_cortex-a5_vfpv4/packages/
+src/gz openwrt_luci https://dl.openwrt.ai/packages-24.10/arm_cortex-a5_vfpv4/luci/
+src/gz openwrt_routing https://dl.openwrt.ai/packages-24.10/arm_cortex-a5_vfpv4/routing/
+src/gz openwrt_kiddin9 https://dl.openwrt.ai/packages-24.10/arm_cortex-a5_vfpv4/kiddin9/
 ```
 ## 可修改LED灯颜色 0为关闭, 1为开启
 - 配置即时生效：例图【蓝色】
